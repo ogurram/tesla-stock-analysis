@@ -80,6 +80,47 @@ The dashboard will open automatically in your default browser. You'll see tabs f
    - Error messages for missing or invalid data
    - Automatic loading of analysis results
 
+## Deployment
+
+### Deploy to Vercel
+
+1. Install Vercel CLI:
+```bash
+npm install -g vercel
+```
+
+2. Login to Vercel:
+```bash
+vercel login
+```
+
+3. Deploy the project:
+```bash
+vercel
+```
+
+4. Set environment variables in Vercel dashboard:
+   - STREAMLIT_SERVER_PORT: 8501
+   - PYTHONPATH: .
+
+### Deploy to Heroku
+
+1. Create a Heroku app:
+```bash
+heroku create
+```
+
+2. Push to Heroku:
+```bash
+git push heroku main
+```
+
+3. Set environment variables:
+```bash
+heroku config:set STREAMLIT_SERVER_PORT=8501
+heroku config:set PYTHONPATH=.
+```
+
 ## Troubleshooting
 
 1. **Missing Data File**
