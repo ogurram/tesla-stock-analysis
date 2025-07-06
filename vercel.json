@@ -1,5 +1,4 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
   "builds": [
     {
@@ -19,7 +18,5 @@
   "env": {
     "PORT": "${{secrets.PORT}}",
     "PYTHONUNBUFFERED": "1"
-  },
-  "installCommand": "python3.8 -m pip install --upgrade pip && python3.8 -m pip install -r requirements.txt",
-  "outputDirectory": "dist"}
+  }
 }
