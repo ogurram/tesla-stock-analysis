@@ -3,16 +3,16 @@
   "builds": [
     {
       "src": "frontend/app.py",
-      "use": "@vercel/static-build",
+      "use": "@vercel/python",
       "config": {
-        "distDir": "dist"
+        "pythonVersion": "3.9"
       }
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/index.html"
+      "dest": "frontend/app.py"
     }
   ],
   "env": {

@@ -1,0 +1,12 @@
+{
+  "name": "tesla-stock-analysis",
+  "version": "1.0.0",
+  "description": "Tesla stock analysis dashboard",
+  "main": "frontend/app.py",
+  "scripts": {
+    "start": "streamlit run frontend/app.py --server.port $PORT --server.address 0.0.0.0 --server.enableCORS false"
+  },
+  "dependencies": {
+    "@vercel/python": "^0.1.0"
+  }
+}
