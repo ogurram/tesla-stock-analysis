@@ -3,21 +3,20 @@
   "builds": [
     {
       "src": "frontend/app.py",
-      "use": "@vercel/python",
+      "use": "@vercel/static-build",
       "config": {
-        "pythonVersion": "3.9"
+        "distDir": "dist"
       }
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "frontend/app.py"
+      "dest": "/index.html"
     }
   ],
   "env": {
-    "PYTHONPATH": "${{secrets.PYTHONPATH}}",
-    "STREAMLIT_SERVER_PORT": "${{secrets.STREAMLIT_SERVER_PORT}}",
+    "PORT": "${{secrets.PORT}}",
     "PYTHONUNBUFFERED": "1"
   },
   "installCommand": "pip install --upgrade pip && pip install -r requirements.txt",
