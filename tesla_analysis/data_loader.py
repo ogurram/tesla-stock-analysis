@@ -3,7 +3,7 @@ import numpy as np
 from typing import Optional
 
 class StockDataLoader:
-    """Class responsible for loading and preprocessing stock data"""
+    """Class responsible for loading and preprocessing stock data."""
     
     def __init__(self, data_path: str):
         """
