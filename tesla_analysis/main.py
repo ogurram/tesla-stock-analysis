@@ -11,7 +11,7 @@ import pickle
 from typing import Dict, Any
 
 class TeslaStockAnalysis:
-    """Main class that coordinates all analysis components"""
+    """Main class that coordinates all components analysis"""
     
     def __init__(self, data_path: str):
         """
