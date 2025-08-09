@@ -1,7 +1,7 @@
 # Tesla Stock Analysis Dashboard
 
 A comprehensive dashboard for analyzing Tesla stock data with features including:
-- Price trend analysis (SMA, EMA)
+- Provide latest price trend analysis (SMA, EMA)
 - Volume analysis (Moving Averages)
 - Technical indicators (RSI, Bollinger Bands)
 - Market sentiment analysis
