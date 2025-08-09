@@ -28,30 +28,67 @@ def load_analysis_results():
         st.error(f"Error loading analysis results: {str(e)}")
         return None
 
+def format_currency(value):
+    """Format currency values with appropriate units"""
+    if pd.isna(value):
+        return ""
+    
+    abs_value = abs(value)
+    if abs_value >= 1_000_000_000:
+        return f'${value/1_000_000_000:.2f}B'
+    elif abs_value >= 1_000_000:
+        return f'${value/1_000_000:.2f}M'
+    elif abs_value >= 1_000:
+        return f'${value/1_000:.2f}K'
+    else:
+        return f'${value:.2f}'
+
 def create_price_trend_chart(results):
     """Create price trend chart with moving averages"""
     fig = go.Figure()
     
-    # Add price data
+    # Get the latest price for reference
+    latest_price = results['price_trend']['moving_averages']['sma_20'].iloc[-1]
+    
+    # Add price data with hover text showing formatted values
     fig.add_trace(go.Scatter(
         x=results['price_trend']['moving_averages']['sma_20'].index,
         y=results['price_trend']['moving_averages']['sma_20'],
         name='SMA 20',
-        line=dict(color='blue', width=2)
+        line=dict(color='blue', width=2),
+        hovertemplate='Date: %{x}<br>Price: %{y:$.2f}<extra></extra>'
     ))
     
     fig.add_trace(go.Scatter(
         x=results['price_trend']['moving_averages']['sma_50'].index,
         y=results['price_trend']['moving_averages']['sma_50'],
         name='SMA 50',
-        line=dict(color='orange', width=2)
+        line=dict(color='orange', width=2),
+        hovertemplate='Date: %{x}<br>Price: %{y:$.2f}<extra></extra>'
     ))
     
+    # Set y-axis tick format based on the price range
+    yaxis_tickformat = '$.2f'  # Default format
+    if latest_price >= 1000:
+        yaxis_tickformat = '$.3s'  # Automatic scaling (K, M, B)
+    
     fig.update_layout(
-        title='Price Trend Analysis',
+        title='Tesla Stock Price Trend Analysis (USD)',
         xaxis_title='Date',
-        yaxis_title='Price',
-        template='plotly_dark'
+        yaxis_title='Price (USD)',
+        template='plotly_dark',
+        yaxis=dict(
+            tickformat=yaxis_tickformat,
+            tickprefix='$',
+            hoverformat='$.2f',
+            showgrid=True
+        ),
+        hovermode='x unified',
+        hoverlabel=dict(
+            bgcolor='rgba(0,0,0,0.8)',
+            font_size=12,
+            font_family='Arial'
+        )
     )
     return fig
 
