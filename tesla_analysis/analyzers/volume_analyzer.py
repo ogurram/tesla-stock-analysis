@@ -15,10 +15,10 @@ class VolumeAnalyzer:
         
     def calculate_volume_averages(self) -> Dict[str, pd.Series]:
         """
-        Calculate volume moving averages
+        Calculate volume moving averages.
         
         Returns:
-            Dictionary containing volume moving averages
+            Dictionary containing volume moving averages.
         """
         volume_ma_20 = self.data['Volume'].rolling(window=20).mean()
         volume_ma_50 = self.data['Volume'].rolling(window=50).mean()
