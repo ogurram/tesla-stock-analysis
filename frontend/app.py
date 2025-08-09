@@ -6,7 +6,7 @@ from pathlib import Path
 import numpy as np
 
 def load_analysis_results():
-    """Load the analysis results from pickle file"""
+    """Load the analysis results from pickle file via UI"""
     try:
         # Get absolute path to results file
         results_path = Path(__file__).parent.parent / 'tesla_analysis_results.pkl'
